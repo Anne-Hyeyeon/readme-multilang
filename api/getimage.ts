@@ -7,11 +7,14 @@ export default function(req: VercelRequest, res: VercelResponse) {
     { title: 'Interesting Test' }
   ];
 
-const randomJson:  {title: string} = jsons[Math.floor(Math.random() * jsons.length)];
+  const choice = parseInt(req.query.choice as string);
 
-const svgContent = `
+  const validChoice = choice >= 1 && choice <= jsons.length;
+  const selectedJson = validChoice ? jsons[choice - 1] : jsons[0];
+
+  const svgContent = `
     <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-      <text x="10" y="20">${randomJson.title}</text>
+      <text x="10" y="20">${selectedJson.title}</text>
     </svg>
   `;
 
