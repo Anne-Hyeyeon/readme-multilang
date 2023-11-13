@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default function(req: VercelRequest, res: VercelResponse) {
+export default function (req: VercelRequest, res: VercelResponse) {
   const tarotMsgs: { id: number, title: string, message: string }[] = [
   { "id": 0, "title": "코딩 타로점 안내", "message": "개발자 여러분, 오늘의 코딩 운세가 궁금하신가요? 지금 바로 개발자 타로점을 확인해보세요! 당신의 프로그래밍 여정에 특별한 통찰과 영감을 제공해 드릴 거에요." },
   { "id": 1, "title": "새로운 시작", "message": "오늘은 'Hello, World!'를 넘어서 새로운 프로젝트를 시작할 때입니다!" },
@@ -25,33 +25,46 @@ export default function(req: VercelRequest, res: VercelResponse) {
   { "id": 20, "title": "동료와의 소통", "message": "동료에게 반갑게 인사하고, 격려의 말을 건네 보세요. 이상하게 쳐다보면 어쩔 수 없지만요..." },
   { "id": 21, "title": "일상에서의 탈출", "message": "오늘은 코딩 대신 데이트 어떠세요? 당장 반차 결재를 올리러 가자고요!" },
   { "id": 22, "title": "새로운 도전", "message": "오늘은 새로운 기술적 도전을 시작하기 좋은 날입니다. 당신의 IDE가 준비되어 있습니다!" },
-  { "id": 23, "title": "혼자만의 시간", "message": "혼자만의 시간을 가져보세요. 코드와 당신, 그리고 당신의 생각만이 존재하는 시간을요." }
-  ];
+  { "id": 23, "title": "혼자만의 시간", "message": "혼자만의 시간을 가져보세요. 코드와 당신, 그리고 당신의 생각만이 존재하는 시간을요." }  ];
 
-  const randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
+  const callbackUrl = req.query.callback as string | undefined;
+
+  let randomTarotMsg;
+  if (callbackUrl) {
+    randomTarotMsg = tarotMsgs[0]; 
+  } else {
+    randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
+  }
+
   const svgContent = `
 <svg width="820" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8a2be2;stop-opacity:1" /> 
+      <stop offset="100%" style="stop-color:#9400d3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
   <style>
     .title {
-      fill: #0070f3;
+      fill: white;
       font-size: 24px;
       font-family: 'Helvetica', sans-serif;
       text-anchor: middle;
       font-weight: bold;
     }
     .message {
-      fill: #555;
+      fill: white;
       font-size: 18px;
       font-family: 'Arial', sans-serif;
       text-anchor: middle;
     }
   </style>
+  <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
   <text x="410" y="60" class="title">🔮${randomTarotMsg.title}</text>
   <text x="410" y="120" class="message">💻${randomTarotMsg.message}</text>
 </svg>
-  `;
 
-  const callbackUrl = req.query.callback as string | undefined;
+  `;
 
   if (callbackUrl) {
     res.redirect(callbackUrl);
