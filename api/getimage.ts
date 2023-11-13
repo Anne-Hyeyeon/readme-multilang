@@ -64,8 +64,9 @@ export default function (req: VercelRequest, res: VercelResponse) {
     <tspan>🔮${randomTarotMsg.title}</tspan>
   </text>
   <text x="410" y="120" class="message">
-    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 첫 번째 줄}</tspan>
-    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 두 번째 줄}</tspan>
+   <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split('\n')[0]}</tspan>
+    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split('\n')[1]}</tspan>
+    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split('\n')[2]}</tspan>
   </text>
 </svg>
   `;
