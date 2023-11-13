@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default function (req: VercelRequest, res: VercelResponse) {
   const tarotMsgs: { id: number, title: string, message: string }[] = [
-  { "id": 0, "title": "코딩 타로점 안내", "message": "개발자 여러분, 오늘의 코딩 운세가 궁금하신가요? \n코딩 요정에게 물어보세요! \n당신의 프로그래밍 여정에 \n특별한 통찰과 영감을 제공해 드릴 거에요." },
+  { "id": 0, "title": "코딩 타로점 안내", "message": "개발자 여러분, 오늘의 코딩 운세가 궁금하신가요? \n코딩 요정에게 물어보세요! \n당신의 프로그래밍 여정에 특별한 통찰과 영감을 제공해 드릴 거에요." },
   { "id": 1, "title": "새로운 시작", "message": "오늘은 'Hello, World!'를 넘어서 새로운 프로젝트를 시작할 때입니다!" },
   { "id": 2, "title": "완벽한 코드", "message": "버그 없는 코드를 작성할 수 있는 날입니다. \n못 믿으시겠다면 말고요..." },
   { "id": 3, "title": "언어 학습", "message": "새로운 프로그래밍 언어를 배워보세요. \n 혹시 타입스크립트는 어떠세요?" },
@@ -60,8 +60,15 @@ export default function (req: VercelRequest, res: VercelResponse) {
     }
   </style>
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
-  <tspan x="410" y="60" class="title">🔮${randomTarotMsg.title}</tspan>
-  <tspan x="410" y="120" class="message">💻${randomTarotMsg.message}</tspan>
+  <text x="410" y="60" class="title">
+    <tspan>🔮${randomTarotMsg.title}</tspan>
+  </text> 
+  
+<text x="410" y="120" class="message">
+    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 첫 번째 줄}</tspan>
+    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 두 번째 줄}</tspan>
+    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 세 번째 줄}</tspan>
+  </text>
 </svg>
   `;
 
