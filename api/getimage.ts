@@ -17,7 +17,5 @@ export default function(req: VercelRequest, res: VercelResponse) {
   `;
 
   res.setHeader('Content-Type', 'image/svg+xml');
-  const redirectUrl = 'https://github.com/Anne-Hyeyeon';
-  res.redirect(302, redirectUrl); 
   res.status(200).send(svgContent);
 }
