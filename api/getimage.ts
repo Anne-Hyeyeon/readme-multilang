@@ -26,9 +26,9 @@ export default function(req: VercelRequest, res: VercelResponse) {
   { "id": 21, "title": "일상에서의 탈출", "message": "오늘은 코딩 대신 데이트 어떠세요? 당장 반차 결재를 올리러 가자고요!" },
   { "id": 22, "title": "새로운 도전", "message": "오늘은 새로운 기술적 도전을 시작하기 좋은 날입니다. 당신의 IDE가 준비되어 있습니다!" },
   { "id": 23, "title": "혼자만의 시간", "message": "혼자만의 시간을 가져보세요. 코드와 당신, 그리고 당신의 생각만이 존재하는 시간을요." }
-];
+  ];
 
-  const randomTarotMsg: { id: number, title: string, message: string } = tarotMsgs[Math.floor(Math.random() * jsons.length)];
+  const randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
   const svgContent = `
 <svg width="820" height="200" xmlns="http://www.w3.org/2000/svg">
   <style>
@@ -46,10 +46,9 @@ export default function(req: VercelRequest, res: VercelResponse) {
       text-anchor: middle;
     }
   </style>
-  <text x="410" y="60" class="title">{randomTarotMsg.title}</text>
-  <text x="410" y="120" class="message">{randomTarotMsg.message}</text>
+  <text x="410" y="60" class="title">🔮${randomTarotMsg.title}</text>
+  <text x="410" y="120" class="message">💻${randomTarotMsg.message}</text>
 </svg>
-
   `;
 
   const callbackUrl = req.query.callback as string | undefined;
