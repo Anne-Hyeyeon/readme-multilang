@@ -33,7 +33,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
   if (callbackUrl) {
     randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
   } else {
-    randomTarotMsg = tarotMsgs[0]; 
+    randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
   }
 
   const svgContent = `
