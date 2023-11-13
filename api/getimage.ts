@@ -37,7 +37,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
   }
 
   const svgContent = `
-<svg width="820" height="300" xmlns="http://www.w3.org/2000/svg">
+  <svg width="820" height="300" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#807097;stop-opacity:1" /> 
@@ -62,12 +62,10 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
   <text x="410" y="60" class="title">
     <tspan>🔮${randomTarotMsg.title}</tspan>
-  </text> 
-  
-<text x="410" y="120" class="message">
+  </text>
+  <text x="410" y="120" class="message">
     <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 첫 번째 줄}</tspan>
     <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 두 번째 줄}</tspan>
-    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message의 세 번째 줄}</tspan>
   </text>
 </svg>
   `;
