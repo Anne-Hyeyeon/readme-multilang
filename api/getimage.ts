@@ -1,13 +1,20 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default function(req: VercelRequest, res: VercelResponse) {
-  const images: string[] = [
-    'https://github.com/Anne-Hyeyeon/mystorage/blob/main/multilang/github_multilang_ko.png?raw=true',
-    'https://github.com/Anne-Hyeyeon/mystorage/blob/main/multilang/github_multilang_en.png?raw=true',
-    'https://example.com/image3.jpg',
+  const jsons: {title: string}[] = [
+    { title: 'Hello, World!' },
+    { title: 'Random!' },
+    { title: 'Interesting Test' }
   ];
 
-  const randomImage: string = images[Math.floor(Math.random() * images.length)];
+  const randomJson:  {title: string} = jsons[Math.floor(Math.random() * jsons.length)];
 
-  res.redirect(randomImage);
+const svgContent = `
+    <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <text x="10" y="20">${randomJson.title}</text>
+    </svg>
+  `;
+
+  res.setHeader('Content-Type', 'image/svg+xml');
+  res.status(200).send(svgContent);
 }
