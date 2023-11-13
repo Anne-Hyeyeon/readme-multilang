@@ -54,16 +54,17 @@ export default function (req: VercelRequest, res: VercelResponse) {
     }
     .message {
       fill: white;
-      font-size: 18px;
+      font-size: 20px;
       font-family: 'Arial', sans-serif;
       text-anchor: middle;
+      line-height: 15px;
     }
   </style>
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
   <text x="410" y="60" class="title">
     <tspan>🔮${randomTarotMsg.title}</tspan>
   </text>
-  <text x="410" y="200" class="message">
+  <text x="410" y="60" class="message">
    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split('\n')[0]}</tspan>
     <tspan x="410" dy="1.2em">${randomTarotMsg.message.split('\n')[1]}</tspan>
     <tspan x="410" dy="1.2em">${randomTarotMsg.message.split('\n')[2]}</tspan>
