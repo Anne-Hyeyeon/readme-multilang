@@ -31,17 +31,17 @@ export default function (req: VercelRequest, res: VercelResponse) {
 
   let randomTarotMsg;
   if (callbackUrl) {
-    randomTarotMsg = tarotMsgs[0]; 
-  } else {
     randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
+  } else {
+    randomTarotMsg = tarotMsgs[0]; 
   }
 
   const svgContent = `
 <svg width="820" height="200" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8a2be2;stop-opacity:1" /> 
-      <stop offset="100%" style="stop-color:#9400d3;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#d8b5ff;stop-opacity:1" /> 
+      <stop offset="100%" style="stop-color:#9400d3;stop-opacity:1" /> 
     </linearGradient>
   </defs>
   <style>
@@ -63,7 +63,6 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <text x="410" y="60" class="title">🔮${randomTarotMsg.title}</text>
   <text x="410" y="120" class="message">💻${randomTarotMsg.message}</text>
 </svg>
-
   `;
 
   if (callbackUrl) {
