@@ -7,9 +7,8 @@ export default function(req: VercelRequest, res: VercelResponse) {
     { title: 'Interesting Test' }
   ];
 
-  const choice = parseInt(req.query.choice as string);
-  const validChoice = choice >= 1 && choice <= jsons.length;
-  const selectedJson = validChoice ? jsons[choice - 1] : jsons[0];
+  const choice = parseInt(req.query.choice as string) || 1;
+  const selectedJson = jsons[Math.max(0, Math.min(choice - 1, jsons.length - 1))];
 
   const svgContent = `
     <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -17,15 +16,7 @@ export default function(req: VercelRequest, res: VercelResponse) {
     </svg>
   `;
 
-  const callbackUrl = req.query.callback as string | undefined;
-
   res.setHeader('Content-Type', 'image/svg+xml');
-
-  if (callbackUrl) {
-    const redirectUrl = new URL(callbackUrl);
-    redirectUrl.searchParams.set('choice', choice.toString());
-    res.redirect(redirectUrl.toString());
-  } else {
-    res.status(200).send(svgContent);
-  }
+  const redirectUrl = 'https://github.com/Anne-Hyeyeon';
+  res.redirect(302, redirectUrl); 
 }
