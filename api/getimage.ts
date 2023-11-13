@@ -37,7 +37,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
   }
 
   const svgContent = `
-  <svg width="820" height="300" xmlns="http://www.w3.org/2000/svg">
+  <svg width="820" height="250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#807097;stop-opacity:1" /> 
@@ -57,7 +57,6 @@ export default function (req: VercelRequest, res: VercelResponse) {
       font-size: 20px;
       font-family: 'Arial', sans-serif;
       text-anchor: middle;
-      line-height: 15px;
     }
   </style>
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
