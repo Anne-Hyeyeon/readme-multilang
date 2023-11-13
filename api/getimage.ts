@@ -10,8 +10,16 @@ export default function(req: VercelRequest, res: VercelResponse) {
   const randomJson: { title: string } = jsons[Math.floor(Math.random() * jsons.length)];
 
   const svgContent = `
-    <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-      <text x="10" y="20">${randomJson.title}</text>
+    <svg width="820" height="200" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .title {
+          fill: #0070f3;
+          font-size: 24px;
+          font-family: 'Helvetica', sans-serif;
+          text-anchor: middle;
+        }
+      </style>
+      <text x="410" y="100" class="title" dominant-baseline="middle">${randomJson.title}</text>
     </svg>
   `;
 
@@ -20,7 +28,6 @@ export default function(req: VercelRequest, res: VercelResponse) {
   if (callbackUrl) {
     res.redirect(callbackUrl);
   } else {
-    // callback URL이 없는 경우 SVG 컨텐츠를 반환합니다.
     res.setHeader('Content-Type', 'image/svg+xml');
     res.status(200).send(svgContent);
   }
