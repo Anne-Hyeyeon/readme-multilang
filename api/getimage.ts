@@ -17,13 +17,14 @@ export default function(req: VercelRequest, res: VercelResponse) {
     </svg>
   `;
 
-  // callback 파라미터를 읽어옵니다
   const callbackUrl = req.query.callback as string | undefined;
 
   res.setHeader('Content-Type', 'image/svg+xml');
 
   if (callbackUrl) {
-    res.redirect(callbackUrl);
+    const redirectUrl = new URL(callbackUrl);
+    redirectUrl.searchParams.set('choice', choice.toString());
+    res.redirect(redirectUrl.toString());
   } else {
     res.status(200).send(svgContent);
   }
