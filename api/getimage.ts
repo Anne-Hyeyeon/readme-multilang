@@ -3,7 +3,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 export default function (req: VercelRequest, res: VercelResponse) {
   const tarotMsgs: { id: number, title: string, message: string }[] = [
   { "id": 0, "title": "코딩 타로점 안내", "message": "개발자 여러분, 오늘의 코딩 운세가 궁금하신가요? 코딩 요정에게 물어보세요! \n당신의 프로그래밍 여정에 특별한 통찰과 영감을 제공해 드릴 거에요." },
-  { "id": 1, "title": "새로운 시작", "message": "오늘은 'Hello, World!'를 넘어서 새로운 프로젝트를 시작할 때입니다!" },
+  { "id": 1, "title": "새로운 시작", "message": "오늘은 'Hello, World!'를 넘어서 \n 새로운 프로젝트를 시작할 때입니다!" },
   { "id": 2, "title": "완벽한 코드", "message": "버그 없는 코드를 작성할 수 있는 날입니다. \n못 믿으시겠다면 말고요..." },
   { "id": 3, "title": "언어 학습", "message": "새로운 프로그래밍 언어를 배워보세요. \n 혹시 타입스크립트는 어떠세요?" },
   { "id": 4, "title": "창의적 회의", "message": "팀 회의에서 당신의 아이디어가 빛을 발할 것입니다. \n그렇지만 미팅은 여전히 지루할 거예요." },
