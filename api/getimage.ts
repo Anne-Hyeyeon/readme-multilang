@@ -14,8 +14,8 @@ export default function (req: VercelRequest, res: VercelResponse) {
   { "id": 9, "title": "장기 프로젝트", "message": "장기 프로젝트에 힘을 쏟을 때입니다. \n커피를 준비하세요!" },
   { "id": 10, "title": "새로운 시작", "message": "오래된 코드를 과감히 버리세요. \n새로운 시작이 기다리고 있습니다." },
   { "id": 11, "title": "협업의 힘", "message": "다른 개발자와 협업해서 큰 문제를 해결하세요. \n집단 지성이 최고랍니다." },
-  { "id": 12, "title": "기술적 도전", "message": "오늘은 새로운 기술 스택에 도전해보세요. \n아마도... 블록체인?" },
-  { "id": 13, "title": "학습과 성장", "message": "기술의 트렌드가 빠르게 바뀝니다. \n오늘은 새로운 것을 배워보세요!" },
+  { "id": 12, "title": "기술적 도전", "message": "오늘은 새로운 기술에 도전해보세요. \n아마도... 블록체인?" },
+  { "id": 13, "title": "학습과 성장", "message": "기술의 트렌드가 빠르게 바뀝니다. \n오늘은 새로운 것을 배워보세요! 예를 들면 타입스크립트요~!" },
   { "id": 14, "title": "열정 유지", "message": "프로젝트에 대한 열정을 잃지 마세요. \n당신의 코드가 세상을 바꿀 수 있습니다." },
   { "id": 15, "title": "복잡함 속의 해결책", "message": "복잡한 코드에도 명확한 해결책이 있습니다. \n잠시 뒤로 물러서서 큰 그림을 보세요." },
   { "id": 16, "title": "성공을 향하여", "message": "당신의 노력이 큰 성공으로 이어질 것입니다. \n거의 다 왔어요. 포기하지 마세요!" },
@@ -27,7 +27,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
   { "id": 22, "title": "새로운 도전", "message": "오늘은 새로운 기술적 도전을 시작하기 좋은 날입니다. \n당신의 IDE가 준비되어 있습니다!" },
   { "id": 23, "title": "혼자만의 시간", "message": "혼자만의 시간을 가져보세요. \n코드와 당신, 그리고 당신의 생각만이 존재하는 시간을요." },
   { "id": 24, "title": "코딩 마스터", "message": "오늘은 당신의 코딩 실력이 최고조일 거에요. \n코드는 당신의 무기고, 키보드는 당신의 검이죠!" },
-  { "id": 25, "title": "희망적인 하루", "message": "오늘은 희망이 가득한 날입니다. \n코딩으로 미래를 밝혀보세요!" }, 
+  { "id": 25, "title": "희망적인 하루", "message": "오늘은 희망이 가득한 코딩데이입니다. \n코딩으로 미래를 밝혀보세요!" }, 
  ];
 
   const callbackUrl = req.query.callback as string | undefined;
@@ -38,9 +38,12 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <svg width="820" height="250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#f9dada;stop-opacity:1" /> 
+      <stop offset="0%" style="stop-color:##f99a9a;stop-opacity:1" /> 
       <stop offset="100%" style="stop-color:#f9aaaa;stop-opacity:1" /> 
     </linearGradient>
+     <pattern id="wavePattern" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 0 5 L 5 10 L 10 5 L 5 0 Z" fill="white"/>
+    </pattern>
   </defs>
   <style>
     .title {
@@ -65,8 +68,9 @@ export default function (req: VercelRequest, res: VercelResponse) {
   </text>
 <text x="410" y="120" class="message">
    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split('\n')[0]}</tspan>
-    <tspan x="410" dy="1.2em">${randomTarotMsg.message.split('\n')[1]}</tspan>
+   <tspan x="410" dy="1.2em">${randomTarotMsg.message.split('\n')[1]}</tspan>
   </text>
+    <rect x="0" y="200" width="100%" height="50" fill="url(#wavePattern)" />
 </svg>
   `;
   
