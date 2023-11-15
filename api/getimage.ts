@@ -273,7 +273,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
   <text x="410" y="60" class="title">
     <tspan x="410" dy="0">🔮${randomTarotMsg.title}🪄</tspan>
-    <tspan x="410" dy="1.5em">${randomTarotMsg.engTitle}</tspan>
+    <tspan x="410" dy="1.3em">${randomTarotMsg.engTitle}</tspan>
   </text>
   <text x="410" y="150" class="message">
     <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split("\n")[0]}</tspan>
