@@ -29,6 +29,8 @@ export default function (req: VercelRequest, res: VercelResponse) {
   { "id": 24, "title": "코딩 마스터", "message": "오늘은 당신의 코딩 실력이 최고조일 거에요. \n코드는 당신의 무기고, 키보드는 당신의 검이죠!" },
   { "id": 25, "title": "희망적인 하루", "message": "오늘은 희망이 가득한 날입니다. \n코딩으로 미래를 밝혀보세요!" }, 
  ];
+
+  const callbackUrl = req.query.callback as string | undefined;
   
   const randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
   
@@ -68,6 +70,10 @@ export default function (req: VercelRequest, res: VercelResponse) {
 </svg>
   `;
   
+  if (callbackUrl) {
+    res.redirect(callbackUrl);
+  } else {
     res.setHeader('Content-Type', 'image/svg+xml');
     res.status(200).send(svgContent);
+  }
 }
