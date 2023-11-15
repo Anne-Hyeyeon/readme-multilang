@@ -278,7 +278,9 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <text x="410" y="150" class="message">
     <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split("\n")[0]}</tspan>
     <tspan x="410" dy="1.2em">${randomTarotMsg.message.split("\n")[1]}</tspan>
-    <tspan x="410" dy="5em">${randomTarotMsg.engMessage.split("\n")[0]}</tspan>
+    <tspan x="410" dy="1.5em">${
+      randomTarotMsg.engMessage.split("\n")[0]
+    }</tspan>
     <tspan x="410" dy="1.2em">${
       randomTarotMsg.engMessage.split("\n")[1]
     }</tspan>
