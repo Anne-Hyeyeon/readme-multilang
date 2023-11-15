@@ -254,10 +254,10 @@ export default function (req: VercelRequest, res: VercelResponse) {
     </linearGradient>
   </defs>
   <style>
-    .title, {
+    .title {
       fill: white;
       font-size: 36px;
-      font-family: 'Helvetica', sans-serif;
+      font-family: 'Arial', sans-serif;
       text-anchor: middle;
       font-weight: bold;
       line-height: 1.2;
@@ -273,14 +273,12 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
   <text x="410" y="60" class="title">
     <tspan x="410" dy="0">🔮${randomTarotMsg.title}🪄</tspan>
-    <tspan x="410" dy="1.2em">${randomTarotMsg.engTitle}</tspan>
+    <tspan x="410" dy="2em">${randomTarotMsg.engTitle}</tspan>
   </text>
   <text x="410" y="150" class="message">
     <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split("\n")[0]}</tspan>
     <tspan x="410" dy="1.2em">${randomTarotMsg.message.split("\n")[1]}</tspan>
-    <tspan x="410" dy="1.2em">${
-      randomTarotMsg.engMessage.split("\n")[0]
-    }</tspan>
+    <tspan x="410" dy="2em">${randomTarotMsg.engMessage.split("\n")[0]}</tspan>
     <tspan x="410" dy="1.2em">${
       randomTarotMsg.engMessage.split("\n")[1]
     }</tspan>
