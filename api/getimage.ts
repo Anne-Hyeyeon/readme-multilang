@@ -25,17 +25,13 @@ export default function (req: VercelRequest, res: VercelResponse) {
   { "id": 20, "title": "동료와의 소통", "message": "동료에게 반갑게 인사하고, 격려의 말을 건네 보세요. \n이상하게 쳐다보면 어쩔 수 없지만요..." },
   { "id": 21, "title": "일상에서의 탈출", "message": "오늘은 코딩 대신 데이트 어떠세요? \n당장 반차 결재를 올리러 가자고요!" },
   { "id": 22, "title": "새로운 도전", "message": "오늘은 새로운 기술적 도전을 시작하기 좋은 날입니다. \n당신의 IDE가 준비되어 있습니다!" },
-  { "id": 23, "title": "혼자만의 시간", "message": "혼자만의 시간을 가져보세요. \n코드와 당신, 그리고 당신의 생각만이 존재하는 시간을요." }  ];
-
-  const callbackUrl = req.query.callback as string | undefined;
-
-  let randomTarotMsg;
-  if (callbackUrl) {
-    randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
-  } else {
-    randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
-  }
-
+  { "id": 23, "title": "혼자만의 시간", "message": "혼자만의 시간을 가져보세요. \n코드와 당신, 그리고 당신의 생각만이 존재하는 시간을요." },
+  { "id": 24, "title": "코딩 마스터", "message": "오늘은 당신의 코딩 실력이 최고조일 거에요. \n코드는 당신의 무기고, 키보드는 당신의 검이죠!" },
+  { "id": 25, "title": "희망적인 하루", "message": "오늘은 희망이 가득한 날입니다. \n코딩으로 미래를 밝혀보세요!" }, 
+ ];
+  
+  const randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
+  
   const svgContent = `
   <svg width="820" height="250" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -47,25 +43,23 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <style>
     .title {
       fill: white;
-      font-size: 48px;
+      font-size: 36px;
       font-family:  'Nanum Gothic', 'Malgun Gothic','Helvetica', sans-serif;
       text-anchor: middle;
       font-weight: bold;
+      line-height: 1.2;
     }
     .message {
       fill: white;
       font-size: 24px;
       font-family:  'Nanum Gothic', 'Malgun Gothic','Arial', sans-serif;
       text-anchor: middle;
-    }
-    .wave {
-      fill: url(#backgroundGradient);
+      line-height: 1.5;
     }
   </style>
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
-  <path class="wave" d="M0,250 Q410,300 820,250 T820,300 L0,300 Z"/>
   <text x="410" y="60" class="title">
-      <tspan x="410" dy="0">🔮${randomTarotMsg.title}</tspan>
+      <tspan x="410" dy="0">🔮${randomTarotMsg.title}🪄</tspan>
   </text>
 <text x="410" y="120" class="message">
    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split('\n')[0]}</tspan>
@@ -73,11 +67,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
   </text>
 </svg>
   `;
-
-  if (callbackUrl) {
-    res.redirect(callbackUrl);
-  } else {
+  
     res.setHeader('Content-Type', 'image/svg+xml');
     res.status(200).send(svgContent);
-  }
 }
