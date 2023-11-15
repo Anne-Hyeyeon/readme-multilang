@@ -38,12 +38,9 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <svg width="820" height="250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:##f99a9a;stop-opacity:1" /> 
+      <stop offset="0%" style="stop-color:#f99a9a;stop-opacity:1" /> 
       <stop offset="100%" style="stop-color:#f9aaaa;stop-opacity:1" /> 
     </linearGradient>
-     <pattern id="wavePattern" width="10" height="10" patternUnits="userSpaceOnUse">
-      <path d="M 0 5 L 5 10 L 10 5 L 5 0 Z" fill="white"/>
-    </pattern>
   </defs>
   <style>
     .title {
