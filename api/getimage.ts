@@ -38,9 +38,12 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <svg width="820" height="250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#f99a9a;stop-opacity:1" /> 
-      <stop offset="100%" style="stop-color:#f9aaaa;stop-opacity:1" /> 
+      <stop offset="0%" style="stop-color:#f1a9a9;stop-opacity:1" /> 
+      <stop offset="100%" style="stop-color:#feb2b2;stop-opacity:1" /> 
     </linearGradient>
+    <pattern id="heartPattern" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 Z" fill="white"/>
+    </pattern>
   </defs>
   <style>
     .title {
@@ -59,6 +62,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
       line-height: 1.5;
     }
   </style>
+  <rect width="100%" height="100%" fill="url(#heartPattern)" />
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
   <text x="410" y="60" class="title">
       <tspan x="410" dy="0">🔮${randomTarotMsg.title}🪄</tspan>
