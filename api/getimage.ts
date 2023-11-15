@@ -40,26 +40,30 @@ export default function (req: VercelRequest, res: VercelResponse) {
   <svg width="820" height="250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#807097;stop-opacity:1" /> 
-      <stop offset="100%" style="stop-color:#647979;stop-opacity:1" /> 
+      <stop offset="0%" style="stop-color:#f9dada;stop-opacity:1" /> 
+      <stop offset="100%" style="stop-color:#f9aaaa;stop-opacity:1" /> 
     </linearGradient>
   </defs>
   <style>
     .title {
       fill: white;
-      font-size: 24px;
-      font-family: 'Helvetica', sans-serif;
+      font-size: 48px;
+      font-family:  'Nanum Gothic', 'Malgun Gothic','Helvetica', sans-serif;
       text-anchor: middle;
       font-weight: bold;
     }
     .message {
       fill: white;
-      font-size: 20px;
-      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-family:  'Nanum Gothic', 'Malgun Gothic','Arial', sans-serif;
       text-anchor: middle;
+    }
+    .wave {
+      fill: url(#backgroundGradient);
     }
   </style>
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
+  <path class="wave" d="M0,250 Q410,300 820,250 T820,300 L0,300 Z"/>
   <text x="410" y="60" class="title">
       <tspan x="410" dy="0">🔮${randomTarotMsg.title}</tspan>
   </text>
