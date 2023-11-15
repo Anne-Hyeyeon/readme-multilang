@@ -35,21 +35,18 @@ export default function (req: VercelRequest, res: VercelResponse) {
   const randomTarotMsg = tarotMsgs[Math.floor(Math.random() * tarotMsgs.length)];
   
   const svgContent = `
-  <svg width="820" height="250" xmlns="http://www.w3.org/2000/svg">
+  <svg width="820" height="220" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#f1a9a9;stop-opacity:1" /> 
-      <stop offset="100%" style="stop-color:#feb2b2;stop-opacity:1" /> 
+      <stop offset="100%" style="stop-color:#f9e3e3;stop-opacity:1" /> 
     </linearGradient>
-    <pattern id="heartPattern" width="100" height="100" patternUnits="userSpaceOnUse">
-      <path d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 Z" fill="white"/>
-    </pattern>
   </defs>
   <style>
     .title {
       fill: white;
       font-size: 36px;
-      font-family:  'Nanum Gothic', 'Malgun Gothic','Helvetica', sans-serif;
+      font-family: 'Helvetica', sans-serif;
       text-anchor: middle;
       font-weight: bold;
       line-height: 1.2;
@@ -57,15 +54,14 @@ export default function (req: VercelRequest, res: VercelResponse) {
     .message {
       fill: white;
       font-size: 24px;
-      font-family:  'Nanum Gothic', 'Malgun Gothic','Arial', sans-serif;
+      font-family: 'Arial', sans-serif;
       text-anchor: middle;
       line-height: 1.5;
     }
   </style>
-  <rect width="100%" height="100%" fill="url(#heartPattern)" />
   <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
   <text x="410" y="60" class="title">
-      <tspan x="410" dy="0">🔮${randomTarotMsg.title}🪄</tspan>
+    <tspan x="410" dy="0">🔮${randomTarotMsg.title}🪄</tspan>
   </text>
 <text x="410" y="120" class="message">
    <tspan x="410" dy="1.2em">💻${randomTarotMsg.message.split('\n')[0]}</tspan>
